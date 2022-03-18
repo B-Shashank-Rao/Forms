@@ -1,0 +1,46 @@
+
+<p>User : {{user}}
+</p>
+
+<form [formGroup]="ProductForm" (ngSubmit)="onSubmit()"> 
+<h1>Product Form</h1>
+<div class="form-outline mb-4">
+<label class="form-label" for="form1Example1">Name</label>
+<input type="name" id="form1Example1" class="form-control"  formControlName="name"/>
+
+ <br>
+ </div>
+ <div class="form-outline mb-4">
+    <label class="form-label" for="form1Example1">Model Number</label>
+    <input type="text" id="form1Example1" class="form-control"  formControlName="modelNo"/>
+     
+    <br>
+</div>
+<div class="form-outline mb-4">
+    <label class="form-label" for="form1Example1">Unit Price</label>
+    <input type="number" id="form1Example1" class="form-control"  formControlName="unitPrice"/>
+     
+    <br>
+</div>
+<div class="form-outline mb-4">
+    <label class="form-label" for="form1Example1">Quantity</label> 
+    <input type="number" id="form1Example1" class="form-control"  formControlName="quantity"/>
+   
+    <br>
+</div>
+<div class="form-outline mb-4">
+    <label class="form-label" for="form1Example1">Description</label> 
+    <input type="text" id="form1Example1" class="form-control"  formControlName="description"/>
+    
+    <br>
+</div>
+
+<button type="submit" class="btn btn-primary" (click)="create()">Create
+</button>
+<br>
+ <button type="submit" class="btn btn-primary" (click)="navigate()">Go To Table 
+ </button>
+ <br>
+ <button type="submit" class="btn btn-primary" (click)="logout()">Logout
+</button> 
+</form>

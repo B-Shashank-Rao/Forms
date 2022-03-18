@@ -1,0 +1,37 @@
+
+  
+  <section>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5"> 
+    <h1>Login Form</h1>
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form1Example1">Email address</label>
+      <input type="email" id="form1Example1" class="form-control"  formControlName="email"/>
+     
+      <div *ngIf="f.email.errors.email" class="required">Enter valid email address
+      </div>
+      <div *ngIf="f.email.invalida && f.email.errors " class="required"> Email is required</div>
+      </div>
+      <br>
+  <!-- Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form1Example2">Password</label>
+      <input type="password" id="form1Example2" class="form-control" formControlName="password" />
+      
+      <div *ngIf="f.password.errors.minlength" class="required">Password must be of atleast 6 characters
+      </div>
+    </div>
+
+    <br>
+  
+  
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary" (click)="gototable()">Sign in
+
+    </button>
+  </form>
+  <!-- <app-table [email]="f.email"></app-table> -->
+  </section>
+  
+  
+  

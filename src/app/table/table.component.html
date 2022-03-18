@@ -1,0 +1,31 @@
+<p>User : {{user}}
+</p>
+<br>
+<h1>Product Table</h1>  
+<input type="text" (keyup)="display($event)"   placeholder="enter the product name">
+<table class="table">
+   <thead class="thead-dark">
+        <th>Name</th>
+        <th> ModelNo </th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Description</th>
+    </thead>
+    <tbody *ngFor="let data of httpdata">
+      <tr>
+            <td> {{data.attributes.name}} </td>
+            <td> {{data.attributes.modelNo}} </td>
+            <td> {{data.attributes.quantity}} </td>
+            <td> {{data.attributes.unit_price}} </td>
+            <td>{{data.attributes.description}}</td>
+        </tr>
+    </tbody>
+</table>
+<button type="submit" class="btn btn-primary " (click)="createval()" >Create 
+    </button>
+    <button type="submit" class="btn btn-primary " (click)="deleteval()" >Delete
+    </button>
+    <button type="submit" class="btn btn-primary " (click)="insertval()" >Update
+    </button>
+    <button type="submit" class="btn btn-primary" (click)="logout()">Logout
+    </button>
