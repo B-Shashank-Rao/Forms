@@ -10,6 +10,7 @@ import { ProductComponent } from './product/product.component';
 import { DeleteComponent } from './delete/delete.component';
 import { SearchComponent } from './search/search.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SearchFilterPipe } from './search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     TableComponent,
     ProductComponent,
     DeleteComponent,
-    SearchComponent
+    SearchComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,

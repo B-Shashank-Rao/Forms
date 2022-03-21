@@ -6,68 +6,88 @@ import {Router} from '@angular/router';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit 
+{
   public httpdata: any;
   public text1:any | undefined ;
   public user: any;
-  constructor(private router:Router,public httpclient:HttpClient) {
+  public searchFilter: any ;
+  
+  constructor(private router:Router,public httpclient:HttpClient) 
+  {
     console.log(this.httpdata);
   }
-
-ngOnInit() : void {
-     this.httpdata=[];
-     this.text1=[];
-  if(sessionStorage.getItem('Email') == null){
+ngOnInit() : void 
+{
+  this.httpdata=[];
+  this.text1=[];
+  if(sessionStorage.getItem('Email') == null)
+  {
     this.router.navigate(['/login']);
-}
-  else{
+  }
+  else
+  {
     this.user=sessionStorage.getItem('Email');
     console.log(this.user);
   }
-this.httpclient.get('http://localhost:1337/api/categories?populate=products').subscribe((res:any)=>{
-console.log(res);
-});
-this.httpclient.get('http://localhost:1337/api/products?sort[0]=name').subscribe((res:any)=>{
- console.log(res);
- this.httpdata=res.data;
+this.httpclient.get('http://localhost:1337/api/products').subscribe((res:any)=>{
+console.log(res.data);
+
+this.httpdata=res.data;
 console.log(this.httpdata);
+// localStorage.setItem('Result',JSON.parse(this.httpdata))
 });
 }
-display(event:any){
-// console.log(this.text1 = val.target.value);
-this.text1 = event.target.value;
-var text=this.text1;
-for(let i in text){
-this.httpclient.get('http://localhost:1337/api/products?filters[name][$eq]='+text).subscribe((res:any)=>{
-//this.httpdata=res.data;
-text=res.data;
-console.log('',text[i])
-});
+display(e:any)
+{
+ console.log(this.text1=e.value);
+//  console.log(localStorage.getItem("Result"))
 }
-}
+// displaynames(e:any){
+// this.httpclient.get('http://localhost:1337/api/products?filters[name][$eq]='+this.text1).subscribe((res:any)=>{
+// this.httpdata=res.data;
+// });
+// }
+//for(i=0;i<text.length;i++){
+
+//console.log(text[i]); 
+  // else{
+    // this.httpdata=res.data;
+  // }
+//}
+//console.log('',this.text1)
+//}
+//});
+//}
 
 
-createval(){
-    this.router.navigate(['/product']);
- }
-    deleteval(){
-  this.httpclient.delete('http://localhost:1337/api/products/11')
-  .subscribe((res)=>{
-    console.log("Deleted",res);
+createval()
+{
+  this.router.navigate(['/product']);
+}
+deleteval()
+{
+this.httpclient.delete('http://localhost:1337/api/products/11').subscribe((res)=>
+{
+  console.log("Deleted",res);
 });
 }
-insertval(){
-  var obj1={
-    "data":{
+insertval()
+{
+  var obj1=
+  {
+    "data":
+    {
       "name":"HeadPhones",
     }
   }
-  this.httpclient.put('http://localhost:1337/api/products/1',obj1)
-  .subscribe((res:any)=>{
-        console.log("Updated",res);
+this.httpclient.put('http://localhost:1337/api/products/1',obj1).subscribe((res:any)=>
+{
+  console.log("Updated",res);
 });
- }
-logout(){
+}
+logout()
+{
   sessionStorage.removeItem('Email');
   alert('Logout Successfull')
   this.router.navigate(['/login']);
