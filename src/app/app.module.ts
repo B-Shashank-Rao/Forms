@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { TableComponent } from './table/table.component';
 import { ProductComponent } from './product/product.component';
 import { DeleteComponent } from './delete/delete.component';
-import { SearchComponent } from './search/search.component';
+// import { SearchComponent } from './search/search.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SearchFilterPipe } from './search-filter.pipe';
 
@@ -19,7 +19,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
     TableComponent,
     ProductComponent,
     DeleteComponent,
-    SearchComponent,
+    // SearchComponent,
     SearchFilterPipe
   ],
   imports: [

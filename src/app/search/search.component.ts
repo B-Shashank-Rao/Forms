@@ -8,24 +8,25 @@ import { Router } from '@angular/router';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
- // public data:any;
- // SearchForm:FormGroup | any;
- // submitted=false;
-
-  constructor(private router:Router,public httpclient: HttpClient) { }
-
-  ngOnInit(): void{
+export class SearchComponent implements OnInit 
+{
+  public userdata:any;
+  constructor(private router:Router,public httpclient: HttpClient) 
+  {
 
   }
-  logout(){
-  
-      this.router.navigate(['/login'])
-     
-    
-    }
-  
-
-  
+ngOnInit(): void
+{
+  this.userdata=[];
+  this.httpclient.get('http://localhost:1337/api/products?filters[created_by_id]{$eq]=1').subscribe((res:any)=>
+  {
+    this.userdata=res.data;
+    console.log('',this.userdata)
+  });
+}
+logout()
+{
+  this.router.navigate(['/login'])
+}
 }
 

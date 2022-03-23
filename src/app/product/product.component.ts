@@ -45,20 +45,27 @@ create(){
      "unit_price":this.ProductForm.get('unitPrice').value,
      "quantity":this.ProductForm.get('quantity').value,
      "description":this.ProductForm.get('description').value,
+
  
 }})
 .subscribe(
   (data)=>{
-    console.log("Post is successfull", data)
-  });
-alert('Table Created Successfully');
+    console.log(data)
+    alert('Table Created Successfully');
+    this.router.navigate(['/table']);
+  },
+  ((error)=>{
+    alert('Product name already exists')
+  }));
+
 }
-navigate(){
-  this.router.navigate(['/table']);
-}
+//navigate(){
+  
+//}
 logout(){
   sessionStorage.removeItem('Email');
   alert('Logout Successfull')
   this.router.navigate(['/login']);
+  console.clear();
 }
 }

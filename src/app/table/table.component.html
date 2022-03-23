@@ -2,7 +2,7 @@
 </p>
 <br>
 <h1>Product Table</h1>  
-<input #text1 type="text" (keyup.enter)="display(text1)" [(ngModel)]="searchFilter" placeholder="enter the product name"  >
+<input  type="text"  [(ngModel)]="searchFilter" placeholder="enter the product name"  >
 <!-- <button type="submit" (click)="displaynames(text1)" class="btn btn-primary " >Search
 </button> -->
 <table class="table">
@@ -29,5 +29,7 @@
 </button>
 <button type="submit" class="btn btn-primary " (click)="insertval()" >Update
 </button>
+<!-- <button type="submit" class="btn btn-primary" (click)="createdby()">Created_By
+</button> -->
 <button type="submit" class="btn btn-primary" (click)="logout()">Logout
 </button>
