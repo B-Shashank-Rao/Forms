@@ -11,6 +11,7 @@ export class ProductComponent implements OnInit {
   ProductForm: FormGroup | any ;
   submitted=false;
   public user: any;
+  public img:any;
   constructor(private formbuilder:FormBuilder,public httpclient: HttpClient,private router:Router) { }
 
   ngOnInit(): void {
@@ -31,6 +32,10 @@ export class ProductComponent implements OnInit {
     else{
       this.user=sessionStorage.getItem('Email');
     }
+    this.httpclient.get('http://localhost:1337/api/upload/files').subscribe((res:any)=>{
+      console.log(res)
+      this.img=res;
+    })
   }
   get f(){
     return this.ProductForm.controls;

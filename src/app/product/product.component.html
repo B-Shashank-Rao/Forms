@@ -3,7 +3,11 @@
 </p>
 
 <form [formGroup]="ProductForm" (ngSubmit)="onSubmit()"> 
+<!-- <div *ngFor="let data of img">
+    {{data}}
+ </div>  -->
 <h1>Product Form</h1>
+
 <div class="form-outline mb-4">
 <label class="form-label" for="form1Example1">Name</label>
 <input type="name" id="form1Example1" class="form-control"  formControlName="name"/>
@@ -18,13 +22,13 @@
 </div>
 <div class="form-outline mb-4">
     <label class="form-label" for="form1Example1">Unit Price</label>
-    <input type="number" id="form1Example1" class="form-control"  formControlName="unitPrice"/>
-     
+    <input type="text" id="form1Example1" class="form-control"  formControlName="unitPrice"/>
+
     <br>
 </div>
 <div class="form-outline mb-4">
     <label class="form-label" for="form1Example1">Quantity</label> 
-    <input type="number" id="form1Example1" class="form-control"  formControlName="quantity"/>
+    <input type="text" id="form1Example1" class="form-control"  formControlName="quantity"/>
    
     <br>
 </div>

@@ -6,3 +6,11 @@ p{
     color:#fff;
     background-color: black;
 } */
+
+@media screen and  (max-width:992px) and (min-width:374px)
+{
+    table{
+        flex-wrap: wrap;
+        flex:100%;
+    }
+}

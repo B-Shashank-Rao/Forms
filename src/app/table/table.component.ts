@@ -13,9 +13,10 @@ export class TableComponent implements OnInit
   public user: any;
   public searchFilter: any ;
   public itemss:any;
+  public productImage:any;
   constructor(private router:Router,public httpclient:HttpClient) 
   {
-    console.log(this.httpdata);
+       this.productImage="http://localhost:1337"
   }
   ngOnInit() : void 
   {
@@ -30,18 +31,12 @@ export class TableComponent implements OnInit
       this.user=sessionStorage.getItem('Email');
       console.log(this.user);
     }
-  this.httpclient.get('http://localhost:1337/api/products').subscribe((res:any)=>{
+  this.httpclient.get('http://localhost:1337/api/products?sort[0]=name&populate=*').subscribe((res:any)=>{
   this.httpdata=res.data;
+  console.log(res.data[7].attributes.productImage.data.attributes)
   console.log(this.httpdata);
-  console.log(this.httpdata.length);
-  for(var i=0;i<=res.data.length;i++)
-  {
-    this.itemss=res.data[i].attributes.name
-    console.log(this.itemss)
-  }
   });
   }
-  // localStorage.setItem('Result',JSON.parse(this.httpdata))
   createval()
   {
     this.router.navigate(['/product']);
