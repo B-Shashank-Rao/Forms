@@ -35,14 +35,16 @@
 <div class="form-outline mb-4">
     <label class="form-label" for="form1Example1">Description</label> 
     <input type="text" id="form1Example1" class="form-control"  formControlName="description"/>
-    
     <br>
 </div>
-
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form1Example1">Product Image</label> 
+       <input type="file" id="form1Example1" class="form-control"  formControlName="productImage" accept="image/*">
+       <!-- (change)="onFileChange($event)" >  --> 
+     </div> 
+    <br>
 <button type="submit" class="btn btn-primary" (click)="create()">Create
 </button>
- <!-- <button type="submit" class="btn btn-primary" (click)="navigate()">Go To Table 
- </button> -->
- <button type="submit" class="btn btn-primary" (click)="logout()">Logout
+<button type="submit" class="btn btn-primary" (click)="logout()">Logout
 </button> 
 </form>

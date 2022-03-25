@@ -11,63 +11,73 @@ export class ProductComponent implements OnInit {
   ProductForm: FormGroup | any ;
   submitted=false;
   public user: any;
-  public img:any;
-  constructor(private formbuilder:FormBuilder,public httpclient: HttpClient,private router:Router) { }
-
-  ngOnInit(): void {
+  constructor(private formbuilder:FormBuilder,public httpclient: HttpClient,private router:Router) { 
+  }
+ ngOnInit(): void {
     this.ProductForm = this.formbuilder.group({
 
       name: [''],
       modelNo: [''],
       unitPrice: [''],
       quantity: [''],
-      description:['']
-   
-   
-    });
-    if(sessionStorage.getItem('Email') == null){
+      description:[''],
+      productImage:['']
+});
+    if(sessionStorage.getItem('Email') == null)
+    {
       this.router.navigate(['/login']);
-   
     }
-    else{
+    else
+    {
       this.user=sessionStorage.getItem('Email');
     }
-    this.httpclient.get('http://localhost:1337/api/upload/files').subscribe((res:any)=>{
-      console.log(res)
-      this.img=res;
-    })
   }
-  get f(){
+  get f()
+  {
     return this.ProductForm.controls;
   }
-  onSubmit(){
+  // onFileChange(event:any) {
+  
+  //   if (event.target.files.length > 0) {
+  //     const file = event.target.files;
+  //     this.ProductForm.patchValue({
+  //       productImage: file
+  //     });
+  //   }
+  // }
+  onSubmit()
+  {
     this.submitted=true;
   }
-create(){ 
-  this.httpclient.post('http://localhost:1337/api/products',{"data" : {
-     "name":this.ProductForm.get('name').value,
+create()
+{ 
+  const formData=new FormData();
+  formData.append('file',this.ProductForm.get('productImage').value)
+  var obj1=
+    {
+      "data":
+      {
+      "name":this.ProductForm.get('name').value,
      "modelNo":this.ProductForm.get('modelNo').value,
      "unit_price":this.ProductForm.get('unitPrice').value,
      "quantity":this.ProductForm.get('quantity').value,
      "description":this.ProductForm.get('description').value,
-
- 
-}})
-.subscribe(
-  (data)=>{
-    console.log(data)
-    alert('Table Created Successfully');
-    this.router.navigate(['/table']);
-  },
-  ((error)=>{
+     "productImage":formData.getAll('file')
+      }
+    }
+  this.httpclient.post('http://localhost:1337/api/products',obj1).subscribe((data)=>
+{
+  console.log(data)
+  alert('Table Created Successfully');
+  this.router.navigate(['/table']);
+},
+  ((error)=>
+  {
     alert('Product name already exists')
   }));
-
 }
-//navigate(){
-  
-//}
-logout(){
+logout()
+{
   sessionStorage.removeItem('Email');
   alert('Logout Successfull')
   this.router.navigate(['/login']);

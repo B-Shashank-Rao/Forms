@@ -31,9 +31,8 @@ export class TableComponent implements OnInit
       this.user=sessionStorage.getItem('Email');
       console.log(this.user);
     }
-  this.httpclient.get('http://localhost:1337/api/products?sort[0]=name&populate=*').subscribe((res:any)=>{
+  this.httpclient.get('http://localhost:1337/api/products?populate=*').subscribe((res:any)=>{
   this.httpdata=res.data;
-  console.log(res.data[7].attributes.productImage.data.attributes)
   console.log(this.httpdata);
   });
   }
@@ -43,7 +42,7 @@ export class TableComponent implements OnInit
   }
   deleteval()
   {
-    this.httpclient.delete('http://localhost:1337/api/products/').subscribe((res)=>
+    this.httpclient.delete('http://localhost:1337/api/products/33').subscribe((res)=>
     {
       console.log("Deleted",res);
     });
