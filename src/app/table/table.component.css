@@ -6,11 +6,15 @@ p{
     color:#fff;
     background-color: black;
 } */
+.material-icons{
+    cursor: pointer;
 
-@media screen and  (max-width:992px) and (min-width:374px)
+}
+@media screen and  (max-width:992px) and (min-width:300px)
 {
     table{
         flex-wrap: wrap;
         flex:100%;
+        display: flex;
     }
 }

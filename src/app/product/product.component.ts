@@ -15,13 +15,12 @@ export class ProductComponent implements OnInit {
   }
  ngOnInit(): void {
     this.ProductForm = this.formbuilder.group({
-
       name: [''],
       modelNo: [''],
       unitPrice: [''],
       quantity: [''],
       description:[''],
-      productImage:['']
+      fileSource:['']
 });
     if(sessionStorage.getItem('Email') == null)
     {
@@ -36,15 +35,17 @@ export class ProductComponent implements OnInit {
   {
     return this.ProductForm.controls;
   }
-  // onFileChange(event:any) {
-  
-  //   if (event.target.files.length > 0) {
-  //     const file = event.target.files;
-  //     this.ProductForm.patchValue({
-  //       productImage: file
-  //     });
-  //   }
-  // }
+  onFileChange(event:any)
+  {
+    const file = event.target.files[0];
+    if(event.target.files)
+    {
+      var reader= new FileReader();
+      reader.onload=(event:any) =>{
+        this.ProductForm.get('fileSource').value=event.target.result;
+      }
+    };
+  }
   onSubmit()
   {
     this.submitted=true;
@@ -52,22 +53,22 @@ export class ProductComponent implements OnInit {
 create()
 { 
   const formData=new FormData();
-  formData.append('file',this.ProductForm.get('productImage').value)
+  formData.append('file',this.ProductForm.get('fileSource').value)
+  console.log(formData)
   var obj1=
     {
       "data":
       {
-      "name":this.ProductForm.get('name').value,
-     "modelNo":this.ProductForm.get('modelNo').value,
-     "unit_price":this.ProductForm.get('unitPrice').value,
-     "quantity":this.ProductForm.get('quantity').value,
-     "description":this.ProductForm.get('description').value,
-     "productImage":formData.getAll('file')
+        "name":this.ProductForm.get('name').value,
+        "modelNo":this.ProductForm.get('modelNo').value,
+        "unit_price":this.ProductForm.get('unitPrice').value,
+        "quantity":this.ProductForm.get('quantity').value,
+        "description":this.ProductForm.get('description').value
       }
     }
-  this.httpclient.post('http://localhost:1337/api/products',obj1).subscribe((data)=>
+  this.httpclient.post('http://localhost:1337/api/products',obj1).subscribe((res:any)=>
 {
-  console.log(data)
+  console.log(res)
   alert('Table Created Successfully');
   this.router.navigate(['/table']);
 },

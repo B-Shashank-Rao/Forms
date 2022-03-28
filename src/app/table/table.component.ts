@@ -42,8 +42,9 @@ export class TableComponent implements OnInit
   }
   deleteval()
   {
-    this.httpclient.delete('http://localhost:1337/api/products/33').subscribe((res)=>
+    this.httpclient.delete('http://localhost:1337/api/products/1').subscribe((res)=>
     {
+      alert('Deleted Successfully')
       console.log("Deleted",res);
     });
   }

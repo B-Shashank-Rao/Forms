@@ -39,8 +39,7 @@
 </div>
   <div class="form-outline mb-4">
     <label class="form-label" for="form1Example1">Product Image</label> 
-       <input type="file" id="form1Example1" class="form-control"  formControlName="productImage" accept="image/*">
-       <!-- (change)="onFileChange($event)" >  --> 
+       <input type="file" id="form1Example1" class="form-control"  accept="image/*" (change)="onFileChange($event)"/> 
      </div> 
     <br>
 <button type="submit" class="btn btn-primary" (click)="create()">Create
