@@ -8,8 +8,8 @@ import {Router} from '@angular/router';
 })
 export class TableComponent implements OnInit 
 {
+  public data:any;
   public httpdata: any;
-  public text1:any | undefined ;
   public user: any;
   public searchFilter: any ;
   public itemss:any;
@@ -40,13 +40,16 @@ export class TableComponent implements OnInit
   {
     this.router.navigate(['/product']);
   }
-  deleteval()
+  deleteval(data:any)
   {
-    this.httpclient.delete('http://localhost:1337/api/products/1').subscribe((res)=>
-    {
-      alert('Deleted Successfully')
-      console.log("Deleted",res);
-    });
+     this.httpclient.delete('http://localhost:1337/api/products/'+data.id).subscribe((res:any)=>
+     {
+       alert('Product Details Deleted Successfully')
+       this.httpdata=res.data;
+       console.log(data.id)
+     });
+     window.location.reload();
+    
   }
   insertval()
   {
@@ -57,7 +60,7 @@ export class TableComponent implements OnInit
         "name":"HeadPhones",
       }
     }
-  this.httpclient.put('http://localhost:1337/api/products/1',obj1).subscribe((res:any)=>
+  this.httpclient.put('http://localhost:1337/api/products/',obj1).subscribe((res:any)=>
   {
     console.log("Updated",res);
   });

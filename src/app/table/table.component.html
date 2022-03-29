@@ -1,5 +1,8 @@
 <p>User : {{user}}
-</p>
+<br>
+<button type="submit" class="btn btn-primary" (click)="createval()" >Create</button></p>
+<br>
+
 <br>
 <h1>Product Table</h1>  
 <input  type="text"  [(ngModel)]="searchFilter" placeholder="enter the product name" >
@@ -23,15 +26,14 @@
                  <td> {{data.attributes.unit_price}}</td>
                  <td>{{data.attributes.description}}</td>
                  <td><img src="{{productImage}}{{data.attributes.productImage.data.attributes.url}}" alt="" width="200" height="100" /></td>
-                 <td><i class="material-icons">&#xE254;</i> <i class="material-icons" (click)="deleteval()">&#xE872;</i></td>
+                 <td> <i class="material-icons"  (click)="deleteval(data)">&#xE872;</i></td>
             </tr>
         </tbody>
      </table>
-<button type="submit" class="btn btn-primary " (click)="createval()">Create
-</button>
+
 <!-- <button type="submit" class="btn btn-primary " (click)="deleteval()">Delete
 </button> -->
-<button type="submit" class="btn btn-primary " (click)="insertval()" >Update
+ <button type="submit" class="btn btn-primary " (click)="insertval()" >Update
 </button>
 <button type="submit" class="btn btn-primary" (click)="logout()">Logout
 </button>

@@ -10,7 +10,11 @@ p{
     cursor: pointer;
 
 }
-@media screen and  (max-width:992px) and (min-width:300px)
+/* .thead-dark{
+    background-color:blueviolet;
+    padding:6px;
+} */
+@media screen and  (max-width:992px) 
 {
     table{
         flex-wrap: wrap;

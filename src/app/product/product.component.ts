@@ -53,7 +53,7 @@ export class ProductComponent implements OnInit {
 create()
 { 
   const formData=new FormData();
-  formData.append('file',this.ProductForm.get('fileSource').value)
+  formData.append('file',this.ProductForm.get('fileSource')?.value)
   console.log(formData)
   var obj1=
     {
